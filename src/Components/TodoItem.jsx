@@ -1,20 +1,24 @@
 import { useState } from "react";
 import DeleteTodo from "./DeleteTodo";
-const TodoItem = ({ todo, onDelete, onUpdate }) => {
+const TodoItem = ({ todo, onDelete, onUpdate, onFinish }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.text);
+
   const handlEdit = () => {
     setIsEditing(true);
   };
   const handleSave = () => {
     if (editText.trim()) {
-      onUpdate(todo.id, editText);
+      onUpdate(todo.id, editText.charAt(0).toUpperCase() + editText.slice(1));
       setIsEditing(false);
     }
   };
   const handleCancel = () => {
     setEditText(todo.text);
     setIsEditing(false);
+  };
+  const handleFinish = () => {
+    onFinish(todo.id);
   };
   return (
     <>
@@ -38,6 +42,7 @@ const TodoItem = ({ todo, onDelete, onUpdate }) => {
           onEdit={handlEdit}
           onSave={handleSave}
           onCancel={handleCancel}
+          onFinish={handleFinish}
         />
       </div>
     </>

@@ -1,8 +1,12 @@
 import { useState } from "react";
 const Addtodos = ({ onAdd }) => {
   const [input, setInput] = useState("");
+  const inputFirstLetterCapital = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
   const handleAdd = () => {
-    onAdd(input);
+    const capitalizedInputFirstWord = inputFirstLetterCapital(input);
+    onAdd(capitalizedInputFirstWord);
     setInput("");
   };
   return (

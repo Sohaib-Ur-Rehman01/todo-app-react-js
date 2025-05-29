@@ -1,5 +1,5 @@
 import TodoItem from "./Components/TodoItem";
-const TodoList = ({ todos, onDelete, onUpdate }) => {
+const TodoList = ({ todos, onDelete, onUpdate, onFinish }) => {
   return (
     <>
       <div id="show-output">
@@ -9,6 +9,7 @@ const TodoList = ({ todos, onDelete, onUpdate }) => {
             todo={todo}
             onDelete={onDelete}
             onUpdate={onUpdate}
+            onFinish={onFinish}
           />
         ))}
       </div>

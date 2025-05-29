@@ -113,56 +113,9 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.3);
 }
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* Add these to your existing CSS */
-.edit-input {
-  flex-grow: 1;
-  font-size: 1.1rem;
-  padding: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid var(--starlight);
-  border-radius: 6px;
-  color: white;
-  margin-right: 1rem;
-}
-
-.edit-input:focus {
-  outline: none;
-  border-color: var(--neon-blue);
-  box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.3);
-}
-
-.todo-actions {
-  display: flex;
-  gap: 0.5rem;
-  margin-left: auto;
-}
-
-.save-btn {
-  background: rgba(0, 255, 0, 0.2);
-  color: #5fff5f;
-  border: 1px solid #3dff3d;
-}
-
-.save-btn:hover {
-  background: rgba(0, 255, 0, 0.3);
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-}
-
-.cancel-btn {
-  background: rgba(255, 255, 0, 0.2);
-  color: #ffff5f;
-  border: 1px solid #ffff3d;
-}
-
-.cancel-btn:hover {
-  background: rgba(255, 255, 0, 0.3);
-  box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
-}
-
-/* Adjust delete button positioning */
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* PERFECTED BUTTON STYLES */
+
 button {
   background: linear-gradient(135deg, var(--neon-blue), var(--cosmic-purple));
   color: var(--void-black);
@@ -229,6 +182,8 @@ button:active {
   backdrop-filter: blur(6px);
   border: 1px solid var(--starlight);
   transition: all 0.3s ease;
+  overflow: hidden;
+  gap: 1rem;
 }
 
 .todo-item:hover {
@@ -238,23 +193,51 @@ button:active {
 
 .todo-item span {
   font-size: 1.1rem;
+  flex: 1;
+  min-width: 0;
   color: white;
+  word-break: break-word;
+}
+.edit-input {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--starlight);
+  border-radius: 6px;
+  color: white;
+  margin-right: 1rem;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.3);
+}
+
+.todo-actions {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 0.5rem;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 /* Delete button */
-.delete-btn {
-  background: rgba(255, 0, 0, 0.2);
-  color: #ff6b6b;
-  border: 1px solid #ff3d3d;
+.delete-btn,
+.edit-btn,
+.save-btn,
+.cancel-btn {
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s ease;
-
-  margin-left: 0;
-  width: auto;
+  width: auto; /* Remove fixed width */
+  margin-left: 0; /* Remove fixed margin */
+  white-space: nowrap; /* Prevent button text from wrapping */
+  flex-shrink: 0;
 }
 
 .delete-btn:hover {
@@ -262,23 +245,33 @@ button:active {
   color: white;
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
 }
-.edit-btn {
-  background: rgba(0, 180, 255, 0.2); /* Soft blue glass */
-  color: #5fd3ff; /* Light blue text */
-  border: 1px solid #3dc2ff; /* Bright blue border */
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  width: auto;
-}
 
 .edit-btn:hover {
   background: rgba(0, 180, 255, 0.3); /* Slightly stronger blue */
   color: white;
   box-shadow: 0 0 10px rgba(0, 180, 255, 0.3); /* Glow effect */
+}
+
+.save-btn {
+  background: rgba(0, 255, 0, 0.2);
+  color: #5fff5f;
+  border: 1px solid #3dff3d;
+}
+
+.save-btn:hover {
+  background: rgba(0, 255, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.cancel-btn {
+  background: rgba(255, 255, 0, 0.2);
+  color: #ffff5f;
+  border: 1px solid #ffff3d;
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 255, 0, 0.3);
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
 }
 
 /* Responsive */
@@ -290,4 +283,280 @@ button:active {
   .container {
     padding: 1.5rem;
   }
+}
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////// */ /* Add to your CSS file */
+.todo-item.completed {
+  opacity: 0.7;
+  background: rgba(0, 128, 0, 0.1);
+}
+
+.todo-item.completed span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.finish-btn {
+  background: rgba(0, 180, 0, 0.2);
+  color: #5fff5f;
+  border: 1px solid #3dff3d;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+.finish-btn:hover {
+  background: rgba(0, 180, 0, 0.3);
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 180, 0, 0.3);
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////// */ /* Add to your CSS file */
+.completed-card {
+  background: linear-gradient(to right, #00c9ff, #92fe9d);
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 15px;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.5s ease;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.completed-list {
+  background: rgba(255, 255, 255, 0.1); /* translucent white */
+  border-radius: 20px;
+  padding: 1rem;
+  backdrop-filter: blur(12px); /* frosted effect */
+  -webkit-backdrop-filter: blur(12px); /* for Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  color: #ffffff; /* text color */
+  margin-top: 1rem;
+}
+
+.buttons-group {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 0.5rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.completed-task-btn,
+.unfinish-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: auto; /* Remove fixed width */
+  margin-left: 0; /* Remove fixed margin */
+  white-space: nowrap; /* Prevent button text from wrapping */
+  flex-shrink: 0;
+}
+.unfinish-btn {
+  background: rgba(255, 0, 60, 0.12); /* Cyber red glass */
+  color: #ff003c;
+  border: 1px solid rgba(255, 0, 60, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+}
+
+.unfinish-btn:hover {
+  background: rgba(0, 245, 255, 0.2);
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.6),
+    inset 0 0 12px rgba(0, 245, 255, 0.3);
+  transform: translateY(-2px) scale(1.05);
+}
+.unfinish-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.4);
+}
+
+.completed-task-btn {
+  background: rgba(255, 0, 60, 0.12); /* Cyber red glass */
+  color: #ff003c;
+  border: 1px solid rgba(255, 0, 60, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+}
+
+.completed-task-btn:hover {
+  background: rgba(255, 0, 245, 0.25);
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 0, 245, 0.5);
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Login/SignUpCss\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+/* authStyles.css */
+.auth-container {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  padding: 2rem;
+  margin: 3rem auto;
+  width: 100%;
+  max-width: 400px;
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 2rem;
+  color: white;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #00f5ff;
+  box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.3);
+}
+
+.auth-button {
+  background: linear-gradient(135deg, #00f5ff, #6a00ff);
+  color: #000013;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 245, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(0, 245, 255, 0.5);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.auth-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.auth-card {
+  background: rgba(10, 10, 26, 0.8);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 245, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #00f5ff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\User Credentials////////////////////////////////////// */
+.user-credentials {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(30, 30, 60, 0.35); /* Slightly deeper and more neutral */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #6cfaff; /* Brighter neon edge */
+  box-shadow: 0 0 12px rgba(108, 250, 255, 0.3), 0 4px 20px rgba(0, 0, 0, 0.4); /* Soft ambient glow */
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.user-credentials:hover {
+  box-shadow: 0 0 16px rgba(255, 0, 245, 0.4), 0 4px 20px rgba(255, 0, 245, 0.2);
+  border-color: #ff00f5;
+}
+
+.userId,
+.welcomeUser {
+  color: #6cfaff; /* Neon blue */
+  text-shadow: 0 0 8px rgba(108, 250, 255, 0.5);
+  font-weight: 500;
+  margin: 0.5rem 0;
+  word-break: break-word;
+}
+
+.welcomeUser {
+  font-size: 1.5rem;
+  color: #ff6cf9; /* Softer neon pink */
+  text-shadow: 0 0 10px rgba(255, 108, 249, 0.5);
 }
